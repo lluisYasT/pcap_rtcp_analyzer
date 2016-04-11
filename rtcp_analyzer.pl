@@ -21,9 +21,11 @@ sub analyze_call {
     $index++;
   }
   $call_info{loss} /= $index;
+  # Convert it to %
+  $call_info{loss} /= 2.56;
   $call_info{jitter} /= $index;
   print "Date: $call_info{time}\n";
-  printf "\tPacket loss: %.2f\n", $call_info{loss};
+  printf "\tPacket loss: %.2f%\n", $call_info{loss};
   printf "\tJitter: %.2fms\n\n", $call_info{jitter} / 8;
   
   return %call_info;
