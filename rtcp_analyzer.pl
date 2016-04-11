@@ -37,7 +37,7 @@ if ($#ARGV < 0 or $#ARGV > 2) {
 my $pcap_filename = shift;
 my $src_ip = new Net::IP(shift) or die (Net::IP::Error());
 
-open(my $fh, '-|', "tshark -V -r $pcap_filename -t ad -R 'ip.src==" . $src_ip->ip . " and rtcp' -2");
+open(my $fh, '-|', "tshark -V -r $pcap_filename -t ad -R 'ip.src==" . $src_ip->ip . " and rtcp' -2") or die "Error executing tshark";
 
 my %call_info;
 my $same_call = 0;
