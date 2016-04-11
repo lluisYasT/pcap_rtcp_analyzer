@@ -27,7 +27,7 @@ sub analyze_call {
   # Convert jitter to ms
   $call_info{jitter} /= 8;
   print "Date: $call_info{time}\n";
-  printf "\tPacket loss: %.2f%\n", $call_info{loss};
+  printf "\tPacket loss: %.2f%%\n", $call_info{loss};
   printf "\tJitter: %.2fms\n\n", $call_info{jitter} / 8;
   
   return %call_info;
