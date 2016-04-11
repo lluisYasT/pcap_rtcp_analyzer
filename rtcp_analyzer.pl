@@ -14,9 +14,10 @@ sub analyze_call {
   my %call_info;
   $call_info{time} = $packets[0]{time};
   my $index = 0;
+  ($call_info{loss}, $call_info{jitter}) = (0, 0);
   while ($index < $#packets) {
-    $call_info{loss} += $packets[$index]{fraction_lost};
-    $call_info{jitter} += $packets[$index]{jitter};
+    $call_info{loss} += $packets[$index]{fraction_lost} if $packets[$index]{fraction_lost};
+    $call_info{jitter} += $packets[$index]{jitter} if $packets[$index]{jitter};
     $index++;
   }
   $call_info{loss} /= $index;
